@@ -1,71 +1,81 @@
-# What Is MixERP NEXT (Custom Fork)
-
-[![Join the chat at https://gitter.im/mixerp/mixerp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mixerp/mixerp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-This repository is a **working fork** of the MixERP project — an ASP.NET, PostgreSQL-based open source ERP solution for small and medium enterprises.  
-Our focus is on **custom development** to extend MixERP with a **built-in Online Order Management and Shipping module**, providing an integrated experience for businesses that manage sales, logistics, and fulfillment.
 
 ---
 
-## Current Features and Capabilities
+### What Is AstraERP Community (Custom Fork)
 
-MixERP provides a wide range of enterprise modules, now enhanced in this fork with **order and shipping functionality**:
+**AstraERP Community** is a **working fork of MixERP** — an open-source ERP solution built with ASP.NET and PostgreSQL, designed for small and medium enterprises.
+
+This fork focuses on **custom development**, extending MixERP with:
+
+* A **built-in Kanban board**
+* **Online Order Management**
+* A **Shipping module**
+
+Together, these provide a more integrated experience for businesses managing sales, logistics, and fulfillment.
+
+## Features and Capabilities
+
+MixERP delivers a wide range of enterprise modules. AstraERP builds on these by adding dedicated order and shipping functionality.
 
 ### Core ERP Modules
-- **Human Resource Management (HRM)** – Employees, attendance, leave, contracts, and payroll
-- **Sales & Accounts Receivable** – Quotations, orders, deliveries, returns, recurring invoices
-- **Purchase & Accounts Payable** – Purchase orders, direct purchases, receipts, returns
-- **Inventory Management** – Stock items, kits, multiple stores, transfers, pricing, cost control
-- **Finance & Accounting** – General ledger, journal entries, voucher verification, trial balance, P&L, balance sheet, multi-currency
-- **Production / Manufacturing** – Basic production tracking and resource management
-- **CRM** – Customer relationship features (in development/expanding)
-- **Back Office / Administration** – User roles, policies, branches, tax management, fiscal year, database tools
-- **Point of Sale (POS)** – Sales counters and retail transactions
+
+* **Human Resource Management (HRM)** – Employee records, attendance, leave, contracts, and payroll
+* **Sales & Accounts Receivable** – Quotations, orders, deliveries, returns, recurring invoices
+* **Purchase & Accounts Payable** – Purchase orders, receipts, direct purchases, returns
+* **Inventory Management** – Stock items, kits, multiple warehouses, transfers, pricing, cost control
+* **Finance & Accounting** – General ledger, journal entries, vouchers, trial balance, P\&L, balance sheet, multi-currency
+* **Production / Manufacturing** – Basic production tracking and resource allocation
+* **CRM** – Customer relationship tools (expanding)
+* **Administration & Back Office** – Roles, policies, branches, tax management, fiscal years, database tools
+* **Point of Sale (POS)** – Retail and counter sales
 
 ### Custom Fork Enhancements
-- **Online Order Management**  
-  - Capture, track, and process customer orders directly within the ERP  
-  - Web-based order entry workflows for B2B/B2C environments  
-  - Integration with sales and inventory modules for real-time updates  
 
-- **Shipping Module**  
-  - Shipment creation linked to orders and deliveries  
-  - Basic carrier and tracking information storage  
-  - Packing slip and shipping document support  
-  - Designed to extend toward carrier API integration (future roadmap)
+* **Online Order Management**
 
----
+  * Capture and track customer orders directly within the ERP
+  * Web-based workflows for both B2B and B2C environments
+  * Real-time integration with sales and inventory modules
+
+* **Shipping Module**
+
+  * Create shipments linked to orders and deliveries
+  * Store carrier and tracking details
+  * Generate packing slips and shipping documents
+  * Designed with future carrier API integration in mind
 
 ## Updates and Compatibility
 
-This fork maintains backward compatibility with MixERP, ensuring that upgrades are safe for existing installations while introducing new custom modules.
+AstraERP does **not maintain strict backward compatibility** with MixERP. This ensures stability for existing installations while allowing new modules and features to evolve independently.
 
 ---
 
-
-
 ## Why PostgreSQL?
 
-MixERP is a **PostgreSQL-only ERP**, leveraging its enterprise-grade reliability, scalability, and cross-platform support. PostgreSQL’s performance, licensing model, and active development make it the foundation of this ERP system.
+AstraERP is built on **PostgreSQL**, chosen for its:
+
+* Enterprise-grade reliability
+* Scalability across platforms
+* Transparent licensing
+* High performance and active community
+
+This foundation provides long-term stability for business-critical ERP operations.
 
 ---
 
 ## Additional Highlights
 
-- **Multi-currency, multi-lingual, and multi-establishment** support  
-- **Strict audit control** – past-dated transactions cannot be modified, ensuring accurate balance sheets  
-- **Simplified implementation** – designed to be easier to learn and adopt than most ERP systems
+* **Simplified implementation** – easier to learn, adopt, and deploy compared to many ERP systems
+* **Modular growth** – new features can be added without disrupting existing workflows
 
 ---
-
 
 ## How to Contribute
 
-- Translate MixERP into your language  
-- Report issues and feature requests  
-- Help test the new Order Management and Shipping modules  
-- Spread the word and support the project
+We welcome community involvement:
+
+* Report issues and request features
+* Test the new Order Management and Shipping modules
+* Share feedback, spread the word, and support ongoing development
 
 ---
-
-
