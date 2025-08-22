@@ -1,4 +1,0 @@
-var namespace_mix_e_r_p_1_1_net_1_1_web_controls_1_1_transaction_checklist =
-[
-    [ "TransactionChecklistForm", "class_mix_e_r_p_1_1_net_1_1_web_controls_1_1_transaction_checklist_1_1_transaction_checklist_form.html", "class_mix_e_r_p_1_1_net_1_1_web_controls_1_1_transaction_checklist_1_1_transaction_checklist_form" ]
-];

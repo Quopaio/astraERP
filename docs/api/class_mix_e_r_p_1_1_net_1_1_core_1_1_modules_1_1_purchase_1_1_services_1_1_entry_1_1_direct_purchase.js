@@ -1,4 +1,0 @@
-var class_mix_e_r_p_1_1_net_1_1_core_1_1_modules_1_1_purchase_1_1_services_1_1_entry_1_1_direct_purchase =
-[
-    [ "Save", "class_mix_e_r_p_1_1_net_1_1_core_1_1_modules_1_1_purchase_1_1_services_1_1_entry_1_1_direct_purchase.html#a1351defe825771e4602bdcbbfc32d450", null ]
-];

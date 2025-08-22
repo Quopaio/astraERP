@@ -1,4 +1,0 @@
-var namespace_mix_e_r_p_1_1_net_1_1_web_controls_1_1_stock_transaction_factory =
-[
-    [ "StockTransactionForm", "class_mix_e_r_p_1_1_net_1_1_web_controls_1_1_stock_transaction_factory_1_1_stock_transaction_form.html", "class_mix_e_r_p_1_1_net_1_1_web_controls_1_1_stock_transaction_factory_1_1_stock_transaction_form" ]
-];

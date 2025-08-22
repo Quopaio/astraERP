@@ -1,4 +1,0 @@
-var namespace_mix_e_r_p_1_1_net_1_1_core_1_1_modules_1_1_finance_1_1_entry =
-[
-    [ "JournalVoucher", "class_mix_e_r_p_1_1_net_1_1_core_1_1_modules_1_1_finance_1_1_entry_1_1_journal_voucher.html", "class_mix_e_r_p_1_1_net_1_1_core_1_1_modules_1_1_finance_1_1_entry_1_1_journal_voucher" ]
-];
