@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C12A4F16-0CFF-4186-9DF6-CDC07B8B4525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstraERP", "src\AstraERP\AstraERP.csproj", "{5343D530-B4FB-4FDF-8AEE-657D522DA4FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{BEDC1A00-8F80-499A-B4BD-3298D127472B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixERP.Api", "backend\MixERP.Api\MixERP.Api.csproj", "{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixERP.Domain", "backend\MixERP.Domain\MixERP.Domain.csproj", "{60E1C268-E01A-41B0-AB4D-15C46308E9A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixERP.Infrastructure", "backend\MixERP.Infrastructure\MixERP.Infrastructure.csproj", "{765D4B3F-C19C-4A7F-975C-430A9FC684AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5343D530-B4FB-4FDF-8AEE-657D522DA4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5343D530-B4FB-4FDF-8AEE-657D522DA4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5343D530-B4FB-4FDF-8AEE-657D522DA4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5343D530-B4FB-4FDF-8AEE-657D522DA4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E1C268-E01A-41B0-AB4D-15C46308E9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E1C268-E01A-41B0-AB4D-15C46308E9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E1C268-E01A-41B0-AB4D-15C46308E9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E1C268-E01A-41B0-AB4D-15C46308E9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765D4B3F-C19C-4A7F-975C-430A9FC684AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765D4B3F-C19C-4A7F-975C-430A9FC684AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765D4B3F-C19C-4A7F-975C-430A9FC684AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765D4B3F-C19C-4A7F-975C-430A9FC684AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5343D530-B4FB-4FDF-8AEE-657D522DA4FC} = {C12A4F16-0CFF-4186-9DF6-CDC07B8B4525}
+		{BF9BE5B4-96E3-4B26-B6A3-18A1C970D6F7} = {BEDC1A00-8F80-499A-B4BD-3298D127472B}
+		{60E1C268-E01A-41B0-AB4D-15C46308E9A8} = {BEDC1A00-8F80-499A-B4BD-3298D127472B}
+		{765D4B3F-C19C-4A7F-975C-430A9FC684AA} = {BEDC1A00-8F80-499A-B4BD-3298D127472B}
+	EndGlobalSection
+EndGlobal
