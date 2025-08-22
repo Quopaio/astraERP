@@ -1,0 +1,7 @@
+{
+  "ServerUrl": "http://localhost:5173",
+  "LaunchCommand": "npm run dev",
+  "WorkingDirectory": "ClientApp",
+  "MaxTimeoutInSeconds": 120,
+  "KeepRunning": false
+}

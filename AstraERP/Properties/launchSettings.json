@@ -1,28 +1,11 @@
 ﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:18619",
-      "sslPort": 44325
-    }
-  },
   "profiles": {
-    "AstraERP": {
+    "AstraERP (HTTP 5080)": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5090",
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5080",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }

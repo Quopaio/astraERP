@@ -31,7 +31,11 @@
     "dev": "vite --port 5173 --strictPort",
     "build": "vite build",
     "preview": "vite preview --port 5173",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+
   },
   "browserslist": {
     "production": [
