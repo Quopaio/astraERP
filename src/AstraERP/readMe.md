@@ -52,7 +52,7 @@ ASPNETCORE_URLS=http://localhost:5080 dotnet run --project src/AstraERP/AstraERP
 ### Terminal 3 — React Client (Vite dev server)
 
 ```bash
-cd AstraERP/ClientApp
+cd src/AstraERP/ClientApp
 npm install   # first time only
 npm run dev   # starts Vite
 ```
