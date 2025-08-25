@@ -8,9 +8,8 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "paths": { "@/*": ["src/*"] },
+    "types": ["vite/client"]        // <-- add this
   },
-  "include": ["src"]
+  "include": ["src", "src/vite-env.d.ts"]  // <-- add file to include
 }

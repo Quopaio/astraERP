@@ -1,30 +1,48 @@
-using System.Linq; // <-- needed for .Select
+using System.Linq; // for .Select / LINQ
 using Microsoft.EntityFrameworkCore;
+
 using MixERP.Infrastructure.Data;
 using MixERP.Infrastructure.Customers;
 
-using MixERP.Api.Plugins;   // MUST match namespace in Plugins/*.cs
+using MixERP.Api.Services;      // ICustomersStore + EfCustomersStore
+using MixERP.Api.Plugins;       // plugin bootstrap
 using MixERP.Domain.Plugins;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DB
+// -------------------------------
+// Database
+// -------------------------------
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
-// Repos/services
+// -------------------------------
+// Repositories / Stores
+// -------------------------------
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
+// Use the EF-backed customers store (choose ONE store; don't also register InMemory)
+// If you ever want in-memory for dev only, swap to AddSingleton<InMemoryCustomersStore>()
+//builder.Services.AddScoped<ICustomersStore, EfCustomersStore>();
+
+builder.Services.AddSingleton<ICustomersStore, InMemoryCustomersStore>();
+
+// -------------------------------
 // Core services
+// -------------------------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Load plugins (safe if folder empty) so they can register services
+// -------------------------------
+// Plugins (safe if folder empty)
+// -------------------------------
 var pluginsDir = Path.Combine(AppContext.BaseDirectory, "plugins");
 var loadedPlugins = PluginBootstrap.LoadPlugins(builder.Services, builder.Configuration, pluginsDir);
 
-// Build the app
+// -------------------------------
+// Build & pipeline
+// -------------------------------
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -34,7 +52,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseAuthentication(); // if applicable
+
+// If you configured JWT auth elsewhere (e.g., builder.Services.AddAuthentication(...)),
+// keep these middlewares; otherwise they are harmless.
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -50,7 +71,7 @@ app.MapGet("/api/plugins/manifest", () =>
     })
 );
 
-// Map plugin endpoints (only if plugin implements IApiPluginEndpoints)
+// Map plugin endpoints (if plugin implements IApiPluginEndpoints)
 PluginBootstrap.MapPluginEndpoints(app, loadedPlugins);
 
 app.Run();

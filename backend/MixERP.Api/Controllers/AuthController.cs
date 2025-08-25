@@ -2,60 +2,46 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 
-[ApiController]
-[Route("auth")]
-public class AuthController : ControllerBase
+namespace MixERP.Api.Controllers
 {
-    private readonly IConfiguration _cfg;
-    public AuthController(IConfiguration cfg) => _cfg = cfg;
-
-    [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginDto dto)
+    [ApiController]
+    [Route("api/[controller]")] // -> /api/auth/*
+    [Produces("application/json")]
+    public class AuthController : ControllerBase
     {
-        if (string.IsNullOrWhiteSpace(dto.Username) || string.IsNullOrWhiteSpace(dto.Password))
-            return Unauthorized(new { message = "Invalid credentials" });
+        private readonly IConfiguration _cfg;
+        public AuthController(IConfiguration cfg) => _cfg = cfg;
 
-        var secret = _cfg["Jwt:Secret"];
-        byte[] keyBytes;
-
-        if (!string.IsNullOrWhiteSpace(secret))
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginDto dto)
         {
-            // treat as plain text; require >= 32 bytes for HS256
-            if (Encoding.UTF8.GetByteCount(secret) < 32)
-            {
-                // If you prefer base64 secrets, decode here instead of UTF8:
-                // keyBytes = Convert.FromBase64String(secret);
-                // and then ensure keyBytes.Length >= 32
-                // For now, fallback to a secure random 32-byte key:
-                keyBytes = RandomNumberGenerator.GetBytes(32);
-            }
-            else
-            {
-                keyBytes = Encoding.UTF8.GetBytes(secret);
-            }
+            if (!(dto.Username == "admin" && dto.Password == "admin"))
+                return Unauthorized(new { message = "Invalid credentials" });
+
+            var issuer = _cfg["Jwt:Issuer"];
+            var audience = _cfg["Jwt:Audience"];
+            var secretRaw = _cfg["Jwt:Secret"];
+
+            if (string.IsNullOrWhiteSpace(secretRaw))
+                return StatusCode(500, new { message = "JWT secret missing (Jwt:Secret)." });
+
+            byte[] keyBytes;
+            try { keyBytes = Convert.FromBase64String(secretRaw); }
+            catch { keyBytes = Encoding.UTF8.GetBytes(secretRaw); }
+            if (keyBytes.Length < 32)
+                return StatusCode(500, new { message = "JWT secret must be at least 256 bits (32 bytes)." });
+
+            var creds = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256);
+            var claims = new[] { new Claim(ClaimTypes.Name, dto.Username), new Claim(ClaimTypes.Role, "Admin") };
+            var token = new JwtSecurityToken(issuer: issuer, audience: audience, claims: claims,
+                                             expires: DateTime.UtcNow.AddHours(8), signingCredentials: creds);
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return Ok(new { token = jwt, user = new { id = "1", username = dto.Username, roles = new[] { "Admin" } } });
         }
-        else
-        {
-            keyBytes = RandomNumberGenerator.GetBytes(32);
-        }
 
-        var creds = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            claims: new[] {
-                new Claim(ClaimTypes.Name, dto.Username),
-                new Claim(ClaimTypes.Role, "Admin")
-            },
-            expires: DateTime.UtcNow.AddHours(8),
-            signingCredentials: creds
-        );
-
-        var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-        return Ok(new { token = jwt, user = new { id = "1", username = dto.Username, roles = new[] { "Admin" } } });
+        public record LoginDto(string Username, string Password);
     }
-
-    public record LoginDto(string Username, string Password);
 }

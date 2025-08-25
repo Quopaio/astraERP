@@ -4,21 +4,28 @@ using Microsoft.AspNetCore.SpaServices.Extensions; // AddSpaStaticFiles, UseSpa
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Proxy: /api/* -> BackendApiBase (from appsettings.json)
+// Backend base (fallback to 5050 if not set)
+var backendBase = (builder.Configuration["BackendApiBase"] ?? "http://localhost:5050").TrimEnd('/') + "/";
+
+// Proxy config
 builder.Services.AddReverseProxy().LoadFromMemory(
     routes: new[]
     {
+        // Forward /api/* to backend — NOTE: catchall has **no dash**
         new RouteConfig
         {
-            RouteId = "mixerp-api",
+            RouteId  = "mixerp-api",
             ClusterId = "mixerp",
-            Match = new() { Path = "/api/{**catchall}" },
+            Match = new() { Path = "/api/{**catchall}" }   // <-- fixed
+            // (No PathRemovePrefix — we want /api to reach backend as /api)
+        },
 
-            // IMPORTANT: initialize as an array (IReadOnlyList<...>)
-            Transforms = new[]
-            {
-                new Dictionary<string, string> { ["PathRemovePrefix"] = "/api" }
-            }
+        // Optional: forward legacy /auth/* too (remove if unused)
+        new RouteConfig
+        {
+            RouteId  = "mixerp-auth",
+            ClusterId = "mixerp",
+            Match = new() { Path = "/auth/{**catchall}" }  // <-- also no dash
         }
     },
     clusters: new[]
@@ -28,19 +35,20 @@ builder.Services.AddReverseProxy().LoadFromMemory(
             ClusterId = "mixerp",
             Destinations = new Dictionary<string, DestinationConfig>
             {
-                ["d1"] = new DestinationConfig
-                {
-                    Address = builder.Configuration["BackendApiBase"]!.TrimEnd('/') + "/"
-                }
+                ["d1"] = new DestinationConfig { Address = backendBase }
             }
         }
-    });
+    }
+);
 
+// Serve built SPA from ClientApp/dist
 builder.Services.AddSpaStaticFiles(o => o.RootPath = "ClientApp/dist");
 
 var app = builder.Build();
 
+// IMPORTANT: map proxy BEFORE SPA/static fallback
 app.MapReverseProxy();
+
 app.MapGet("/health", () => Results.Ok(new { ok = true }));
 
 app.UseSpaStaticFiles();
