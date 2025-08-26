@@ -66,14 +66,18 @@ npm run dev   # starts Vite
 
 ---
 
+👉 This is a **development environment**: no CORS, JWT in localStorage, proxy handled by Vite.
+👉 For **production** you’d enable CORS (or serve frontend + backend under one domain) and secure JWT (e.g., via HttpOnly cookies).
+
+
 ### ✅ Quick Check
 
 1. Login via API:
 
    ```bash
-   curl -X POST http://localhost:5050/auth/login \
-     -H "Content-Type: application/json" \
-     -d '{"username":"admin","password":"admin"}'
+  curl -i -X POST http://localhost:5050/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"admin"}'
    ```
 
    Returns a JWT token.

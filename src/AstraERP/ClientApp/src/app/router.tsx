@@ -1,26 +1,27 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginPage from "@/auth/LoginPage";
-import ProtectedRoute from "@/auth/ProtectedRoute";
 import AppShell from "@/layouts/AppShell";
 import DashboardPage from "@/dashboard/DashboardPage";
 import CustomersList from "@/features/customers/list";
+import LoginPage from "@/auth/LoginPage";
+import ProtectedRoute from "@/auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   {
-    element: <ProtectedRoute />,     // gate below routes
+    element: <ProtectedRoute />, // must render <Outlet /> when authed
     children: [
       {
-        element: <AppShell />,       // shared layout (sidebar + topbar)
+        element: <AppShell />,   // layout must render <Outlet />
         children: [
-          { path: "/", element: <DashboardPage /> },
-          { path: "/dashboard", element: <DashboardPage /> },
-          { path: "/customers", element: <CustomersList /> }
-        ]
-      }
-    ]
+          { index: true, element: <DashboardPage /> },    // "/" -> index route
+          { path: "dashboard", element: <DashboardPage /> },
+          { path: "customers", element: <CustomersList /> },
+          { path: "test", element: <div>Test page</div> }, // now /test works
+        ],
+      },
+    ],
   },
-  { path: "*", element: <LoginPage /> }
+  { path: "*", element: <LoginPage /> },
 ]);
 
 export default function AppRouter() {

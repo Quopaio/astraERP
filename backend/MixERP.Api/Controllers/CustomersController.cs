@@ -5,7 +5,7 @@ using MixERP.Api.Services;
 namespace MixERP.Api.Controllers;
 
 [ApiController]
-[Route("customers")]
+[Route("api/customers")]
 public class CustomersController : ControllerBase
 {
     private readonly ICustomersStore _store;

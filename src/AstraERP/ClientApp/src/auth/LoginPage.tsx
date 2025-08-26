@@ -20,7 +20,7 @@ const TOKEN_KEY = import.meta.env.VITE_AUTH_STORAGE_KEY ?? "jwt";
 function computeLoginEndpoint(baseURL?: string): string {
   if (!baseURL) return "/api/auth/login";
   const b = baseURL.replace(/\/+$/, "");
-  return /\/api$/.test(b) ? "auth/login" : "/api/auth/login";
+  return /\/api$/.test(b) ? "/auth/login" : "/api/auth/login";
 }
 
 export default function LoginPage() {
