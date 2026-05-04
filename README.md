@@ -1,81 +1,123 @@
 
 ---
+### What Is AstraERP Community (Custom .NET Core Boilerplate
 
-### What Is AstraERP Community (Custom Fork)
+AstraERP Community is a working fork of MixERP, refactored into a modular .NET Core backend boilerplate used to deploy a variety of business applications.
 
-**AstraERP Community** is a **working fork of MixERP** — an open-source ERP solution built with ASP.NET and PostgreSQL, designed for small and medium enterprises.
+It is not a fixed ERP system — it is a reusable backend foundation for building systems such as:
 
-This fork focuses on **custom development**, extending MixERP with:
+Order management platforms
+Logistics / shipping systems
+Internal business tools
+ERP-style applications
+Admin dashboards and workflow engines
 
-* A **built-in Kanban board**
-* **Online Order Management**
-* A **Shipping module**
+🚀 Purpose: 
+This project provides a production-ready starting point for building scalable, API-driven business applications using:
+.NET Core backend
+PostgreSQL database
+Modular architecture
+CORS-enabled API layer
+Docker + NGINX deployment support
 
-Together, these provide a more integrated experience for businesses managing sales, logistics, and fulfillment.
+🧱 Architecture
+Core
+  - Authentication / Authorization
+  - User & Role management
+  - Policy system
+  - Multi-tenant support (optional)
 
-## Features and Capabilities
+API Layer
+  - RESTful endpoints
+  - CORS enabled
+  - Versioned routing
 
-MixERP delivers a wide range of enterprise modules. AstraERP builds on these by adding dedicated order and shipping functionality.
+Application Layer
+  - Business services
+  - DTO mapping
+  - Workflow logic
 
-### Core ERP Modules
+Infrastructure
+  - PostgreSQL
+  - ORM + migrations
+  - Logging
+  - Background services
 
-* **Human Resource Management (HRM)** – Employee records, attendance, leave, contracts, and payroll
-* **Sales & Accounts Receivable** – Quotations, orders, deliveries, returns, recurring invoices
-* **Purchase & Accounts Payable** – Purchase orders, receipts, direct purchases, returns
-* **Inventory Management** – Stock items, kits, multiple warehouses, transfers, pricing, cost control
-* **Finance & Accounting** – General ledger, journal entries, vouchers, trial balance, P\&L, balance sheet, multi-currency
-* **Production / Manufacturing** – Basic production tracking and resource allocation
-* **CRM** – Customer relationship tools (expanding)
-* **Administration & Back Office** – Roles, policies, branches, tax management, fiscal years, database tools
-* **Point of Sale (POS)** – Retail and counter sales
+Modules
+  - Plug-in style feature system
+  - Can be enabled/disabled per deployment
+🧩 Example Use Cases
 
-### Custom Fork Enhancements
+This boilerplate has been used to deploy multiple types of systems, including:
+Business order intake platforms
+Shipping & logistics tracking systems
+ERP-style internal tools
+Customer portals & admin dashboards
+Workflow / Kanban-based applications
 
-* **Online Order Management**
+🔌 Design Principles: 
+Modular by design (feature-based separation)
+Core remains minimal and stable
+Domain logic is isolated per module
+Easy to extend without modifying core
+API-first architecture for frontend decoupling
+PostgreSQL-backed persistence layer
 
-  * Capture and track customer orders directly within the ERP
-  * Web-based workflows for both B2B and B2C environments
-  * Real-time integration with sales and inventory modules
+⚙️ Setup: 
+1. Clone repository
+git clone https://github.com/your-org/astraerp.git
+cd astraerp
+2. Configure environment
+cp appsettings.example.json appsettings.json
+Update:
+Database connection string
+CORS settings
+Module configuration
+3. Run database migrations
+dotnet ef database update
+4. Run application
+dotnet run
+🐳 Docker + NGINX Deployment
 
-* **Shipping Module**
+A production-ready Docker + NGINX setup is included.
 
-  * Create shipments linked to orders and deliveries
-  * Store carrier and tracking details
-  * Generate packing slips and shipping documents
-  * Designed with future carrier API integration in mind
+Run with Docker Compose
+docker-compose up -d --build
 
-## Updates and Compatibility
+Stack includes:
+.NET Core API container
+PostgreSQL container
+NGINX reverse proxy
+NGINX role:
+API gateway / reverse proxy
+Handles routing to backend service
+CORS-friendly production configuration
+Optional TLS termination (HTTPS)
 
-AstraERP does **not maintain strict backward compatibility** with MixERP. This ensures stability for existing installations while allowing new modules and features to evolve independently.
+🌐 API Features
+REST API architecture
+CORS enabled by default
+Versioned endpoints
+Authentication-ready structure
+Frontend-friendly (SPA / mobile ready)
 
----
+🗄️ Database
+PostgreSQL
+Migration-based schema evolution
+Supports modular feature expansion
 
-## Why PostgreSQL?
+🌱 Roadmap
+Plugin/module marketplace structure
+Event-driven architecture layer
+Background job orchestration
+Multi-tenant SaaS mode
+Expanded Docker deployment profiles (dev/staging/prod)
+🤝 Contributing
 
-AstraERP is built on **PostgreSQL**, chosen for its:
+Contributions are welcome in:
 
-* Enterprise-grade reliability
-* Scalability across platforms
-* Transparent licensing
-* High performance and active community
-
-This foundation provides long-term stability for business-critical ERP operations.
-
----
-
-## Additional Highlights
-
-* **Simplified implementation** – easier to learn, adopt, and deploy compared to many ERP systems
-* **Modular growth** – new features can be added without disrupting existing workflows
-
----
-
-## How to Contribute
-
-We welcome community involvement:
-
-* Report issues and request features
-* Test the new Order Management and Shipping modules
-* Share feedback, spread the word, and support ongoing development
-
----
+Core framework improvements amd Thitd Party API integration
+Module templates
+API enhancements
+Docker/NGINX optimization
+Documentation improvements
